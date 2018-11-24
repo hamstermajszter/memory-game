@@ -12,19 +12,19 @@ import { Subscription } from 'rxjs';
 export class BoardComponent implements OnInit {
 
   board: Field[];
-  private subscription: Subscription;
-
+  private boardChangeSubscription: Subscription;
+  
   constructor(private boardService: BoardService) { 
   }
 
   ngOnInit() {
     this.board = this.boardService.getBoard();
-    this.subscription = this.boardService.boardChanged
+    this.boardChangeSubscription = this.boardService.boardChanged
       .subscribe(
         (board: Field[]) => {
           this.board = board
         }
-      );    
+      );
   }
 
 }

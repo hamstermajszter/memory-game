@@ -1,1 +1,1 @@
-<button class="btn btn-default" [disabled]="field.isRevealed" (click)="flip()"> {{ field.type }} </button>
+<button class="btn btn-default" [disabled]="field.isRevealed || boardService.blockBoard" (click)="flip()"> <img [class.hidden]="!field.isRevealed" src="../../../assets/images/cards/{{ field.type }}.png" /></button>

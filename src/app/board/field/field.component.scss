@@ -2,4 +2,19 @@ button {
     width: 10em;
     height: 10em;
     margin: 2em;
+    color: white;
+    
+    &:focus {
+        outline: none; //I know, it's a big no-no
+        background-color: #fff;
+        border-color: #ccc;
+    }
+
+    img {
+        width: 100%;
+    
+        &.hidden {
+            visibility: hidden;
+        }
+    }
 }
