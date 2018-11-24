@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Field } from './field.model'
+import { BoardService } from '../board.service';
 
 
 @Component({
@@ -12,7 +13,13 @@ export class FieldComponent implements OnInit {
   @Input() field: Field;
   @Input() index: number;
 
+  constructor(private boardService: BoardService) {}
+
   ngOnInit() {
+  }
+
+  flip(){
+    this.boardService.flipField(this.field)
   }
 
 }

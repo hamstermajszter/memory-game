@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Field } from './field/field.model'
 import { BoardService } from './board.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-board',
@@ -12,14 +13,19 @@ import { BoardService } from './board.service';
 export class BoardComponent implements OnInit {
 
   board: Field[];
+  private subscription: Subscription;
 
   constructor(private boardService: BoardService) { 
   }
 
   ngOnInit() {
-    this.board = this.boardService.getNewBoard(3);
-    console.log(this.board);
-    
+    this.board = this.boardService.getBoard();
+    this.subscription = this.boardService.boardChanged
+      .subscribe(
+        (board: Field[]) => {
+          this.board = board
+        }
+      );    
   }
 
 }
