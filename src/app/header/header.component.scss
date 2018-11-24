@@ -1,0 +1,15 @@
+.navbar {
+    background-color: black;
+    border-radius: 0px;
+    
+    .navbar-brand {
+        height: 4em;
+        color: white;
+    }
+
+    img {
+        max-height: 100%;
+        display: inline-block;
+        margin-right: 20px
+    }
+}
