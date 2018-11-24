@@ -6,12 +6,13 @@ import { Subject } from 'rxjs';
 
 export class BoardService {
 
+    boardSizes = [3,4,5,6,7,8,9,10];
+    selectedBoardSize = 3;
     flippedField: Field;
     board: Field[];
     boardChanged = new Subject<Field[]>();
 
     constructor(){
-        this.board = this.getNewBoard(3);
     }
 
     private generateBoard(numberOfPairs: number) {
@@ -24,8 +25,10 @@ export class BoardService {
         return board;
     }
 
-    getNewBoard(numberOfPairs: number): Field[] {
-        return shuffle(this.generateBoard(numberOfPairs))
+    initNewBoard(): void {
+        this.board = shuffle(this.generateBoard(this.selectedBoardSize));
+        this.boardChanged.next(this.board);
+        this.flippedField = undefined;
     }
 
     getBoard() {

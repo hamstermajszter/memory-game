@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BoardService } from '../board/board.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private boardService: BoardService) { }
 
   ngOnInit() {
+  }
+
+  selectNewBoardSize(){
+    this.boardService.initNewBoard();    
   }
 
 }

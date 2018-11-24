@@ -7,8 +7,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss'],
-  providers: [BoardService]
+  styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
 
