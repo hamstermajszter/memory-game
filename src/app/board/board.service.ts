@@ -35,15 +35,19 @@ export class BoardService {
     flipField(field: Field){
         if (this.flippedField === undefined){
             this.flippedField = field
+            this.flippedField.isRevealed = true;
         } else {
             this.checkMatch(field)
+            this.flippedField = undefined;
         } 
-        field.isRevealed = true;
-        this.flippedField.isRevealed = true;
         this.boardChanged.next(this.board);
     }
 
-    checkMatch(field: Field): boolean{
-        return field.getType() === this.flippedField.getType();
+    checkMatch(field: Field): void{
+        if( field.getType() === this.flippedField.getType()) {
+            field.isRevealed = true;
+        } else {
+            this.flippedField.isRevealed = false;
+        }
     }
 }

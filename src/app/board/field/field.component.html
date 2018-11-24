@@ -1,1 +1,1 @@
-<div (click)="flip()"> {{ field.type }} </div>
+<button class="btn btn-default" [disabled]="field.isRevealed" (click)="flip()"> {{ field.type }} </button>
